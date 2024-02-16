@@ -5,8 +5,39 @@ from typing import Optional
 
 from . import nanoflann_ext
 import numpy as np
-from sklearn.neighbors._base import KNeighborsMixin, NeighborsBase, RadiusNeighborsMixin
-from sklearn.utils.validation import check_is_fitted
+
+try:
+    from sklearn.neighbors._base import (
+        KNeighborsMixin,
+        NeighborsBase,
+        RadiusNeighborsMixin,
+    )
+
+    has_sklearn = True
+except ImportError:
+
+    class NeighborsBase(object):
+        pass
+
+    class KNeighborsMixin(object):
+        pass
+
+    class RadiusNeighborsMixin(object):
+        pass
+
+    has_sklearn = False
+
+try:
+    from sklearn.utils.validation import check_is_fitted
+except ImportError:
+
+    def check_is_fitted(estimator, attributes, all_or_any=all):
+        if hasattr(estimator, attributes[0]):
+            return
+        raise ValueError(
+            f"This {estimator} instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator."
+        )
+
 
 SUPPORTED_TYPES = [np.float32, np.float64]
 
@@ -42,9 +73,18 @@ class KDTree(NeighborsBase, KNeighborsMixin, RadiusNeighborsMixin):
         if metric == "l2":  # nanoflann uses squared distances
             radius = radius**2
 
-        super().__init__(
-            n_neighbors=n_neighbors, radius=radius, leaf_size=leaf_size, metric=metric
-        )
+        if has_sklearn:
+            super().__init__(
+                n_neighbors=n_neighbors,
+                radius=radius,
+                leaf_size=leaf_size,
+                metric=metric,
+            )
+        else:
+            self.n_neighbors = n_neighbors
+            self.radius = radius
+            self.leaf_size = leaf_size
+            self.metric = metric
 
     def fit(self, X: np.ndarray, index_path: Optional[str] = None):
         """

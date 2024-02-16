@@ -4,7 +4,14 @@ import pickle
 import os
 import pytest
 from contexttimer import Timer
-from sklearn.exceptions import NotFittedError
+
+try:
+    from sklearn.exceptions import NotFittedError
+
+    has_sklearn = True
+except ImportError:
+    has_sklearn = False
+    NotFittedError = ValueError
 
 
 def test_index_save_load():
