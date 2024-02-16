@@ -32,3 +32,4 @@ test = [
     "tabulate",
     "scikit-learn",
 ]
+benchmark = ["pandas", "seaborn", "contexttimer", "matplotlib", "scikit-learn"]

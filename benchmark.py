@@ -49,8 +49,8 @@ df = pd.DataFrame(
 print(df)
 
 fig, ax = plt.subplots(figsize=(18, 6))
-sns.barplot(data=df, x="Algorithm", y=df.columns[2], ax=ax, ci=None)
-ax.set_yscale("log", basey=4)
+sns.barplot(data=df, x="Algorithm", y=df.columns[2], ax=ax, errorbar=None)
+ax.set_yscale("log", base=4)
 ylabels = ["{:.4f}".format(x) for x in ax.get_yticks()]
 ax.set_yticklabels(ylabels)
 ax.set_title(
