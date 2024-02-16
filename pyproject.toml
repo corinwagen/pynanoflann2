@@ -24,3 +24,11 @@ dependencies = ["numpy"]
 
 [project.optional-dependencies]
 sklearn = ["scikit-learn"]
+test = [
+    "pytest",
+    "pytest-cov",
+    "codecov",
+    "contexttimer",
+    "tabulate",
+    "scikit-learn",
+]
