@@ -3,7 +3,7 @@ import copyreg
 import warnings
 from typing import Optional
 
-import nanoflann_ext
+from . import nanoflann_ext
 import numpy as np
 from sklearn.neighbors._base import KNeighborsMixin, NeighborsBase, RadiusNeighborsMixin
 from sklearn.utils.validation import check_is_fitted
@@ -40,7 +40,7 @@ class KDTree(NeighborsBase, KNeighborsMixin, RadiusNeighborsMixin):
             raise ValueError('Supported metrics: ["l1", "l2"]')
 
         if metric == "l2":  # nanoflann uses squared distances
-            radius = radius ** 2
+            radius = radius**2
 
         super().__init__(
             n_neighbors=n_neighbors, radius=radius, leaf_size=leaf_size, metric=metric
@@ -102,7 +102,7 @@ class KDTree(NeighborsBase, KNeighborsMixin, RadiusNeighborsMixin):
         if radius is None:
             radius = self.radius
         elif self.metric == "l2":
-            radius = radius ** 2  # nanoflann internally uses squared distances
+            radius = radius**2  # nanoflann internally uses squared distances
 
         if n_jobs == 1:
             dists, idxs = self.index.radius_neighbors(X, radius)
