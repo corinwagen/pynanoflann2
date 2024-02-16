@@ -112,6 +112,7 @@ struct KDTreeNumpyAdaptor : public AbstractKDTree<num_t>
       throw std::runtime_error("Error writing index file!");
     }
     index->saveIndex(f);
+    f.close();
     return f.fail();
   }
 
@@ -123,6 +124,7 @@ struct KDTreeNumpyAdaptor : public AbstractKDTree<num_t>
       throw std::runtime_error("Error reading index file!");
     }
     index->loadIndex(f);
+    f.close();
     return f.fail();
   }
 };
