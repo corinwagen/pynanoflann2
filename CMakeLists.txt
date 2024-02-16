@@ -27,4 +27,4 @@ include_directories(${CMAKE_SOURCE_DIR}/nanoflann/include)
 set(BINDINGS nanoflann_ext)
 pybind11_add_module(${BINDINGS} src/pynanoflann.cpp)
 
-install(TARGETS ${BINDINGS} DESTINATION ${CMAKE_SOURCE_DIR}/pynanoflann)
+install(TARGETS ${BINDINGS} LIBRARY DESTINATION pynanoflann)
