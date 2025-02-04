@@ -1,4 +1,4 @@
-# pynanoflann2
+# pynanoflann
 
 This is a fork of [a fork](https://github.com/dwastberg/pynanoflann) of [the unofficial python wrapper](https://github.com/u1234x1234/pynanoflann) to the [nanoflann](https://github.com/jlblancoc/nanoflann) library.
 
