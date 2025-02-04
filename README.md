@@ -4,7 +4,7 @@ This is a fork of [a fork](https://github.com/dwastberg/pynanoflann) of [the uno
 
 The nanoflann implementation of [k-d tree](https://en.wikipedia.org/wiki/K-d_tree) provides one of the best performance for many k-nearest neighbour problems.
 
-The main distinguishing feature of this fork is that it's installable from pip.
+The main distinguishing feature of this fork is that it's installable from pip. None of the actual code has been modified. 
 
 # Install
 
