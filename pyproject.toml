@@ -4,10 +4,11 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "pynanoflann"
-version = "0.0.9"
-description = "Python nanoflann wrapper"
+version = "0.10.0"
+description = "python wrapper for nanoflann"
 readme = "README.md"
 authors = [
+    { name = "Corin Wagen", email = "corin@rowansci.com" },
     { name = "Dag Wästberg", email = "dwastberg@gmail.com" },
     { name = "u1234x1234", email = "u1234x1234@gmail.com" },
 ]
