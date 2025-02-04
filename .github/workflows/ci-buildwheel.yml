@@ -64,19 +64,19 @@ jobs:
       - name: Download Ubuntu wheels
         uses: actions/download-artifact@v4
         with:
-          name: wheels-ubuntu-20.04-0
+          name: wheels-ubuntu-latest
           path: dist
 
       - name: Download Windows wheels
         uses: actions/download-artifact@v4
         with:
-          name: wheels-windows-2019-1
+          name: wheels-windows-latest
           path: dist
 
       - name: Download macOS wheels
         uses: actions/download-artifact@v4
         with:
-          name: wheels-macos-11-2
+          name: wheels-macos-latest
           path: dist
 
       # 3. Publish all SDists & wheels in the dist/ folder
